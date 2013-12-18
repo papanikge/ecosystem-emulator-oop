@@ -7,7 +7,7 @@
 require './organisms.rb'
 
 #
-# Create or reinitialize a 'world' array for the game
+# Our imaginary marine world (with metadata et all)
 #
 class World
   include Enumerable
@@ -36,6 +36,9 @@ class World
     end
   end
 
+  #
+  # Create or reinitialize a 'world' array for the game
+  #
   def init_world(x, y)
     @map = Array.new(x) { |c| c = Array.new(y) }
     traverse_map do |el|
@@ -54,11 +57,11 @@ class World
   end
 
   #
-  # Add an organism to a specific cell
+  # Add an organism to a specific cell. This also updates metadata
   #
   def add(org, x, y)
-    @map[x][y] = org
     # TODO (interact)
+    puts "You requested a #{org.class} in #{x},#{y}."
   end
 
   #
