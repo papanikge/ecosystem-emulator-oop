@@ -26,7 +26,7 @@ class World
   end
 
   #
-  # Runs a block of code against our world
+  # Runs a block of code against our world (needs a block)
   #
   def traverse_map
     @map.each_with_index do |xs, i|
@@ -69,6 +69,7 @@ class World
   #
   def infect(x, y)
     # TODO
+    level = rand(3..9)
   end
 
   #
@@ -82,13 +83,16 @@ class World
   # Function responsible for getting user input in order to add organisms
   #
   def user_add
+    x      ||= rand(0..@dim_x) # fail-safes. Also we probably need these
+    y      ||= rand(0..@dim_y) # because ruby scopes...
+    choice ||= gen_random_org
     puts "Available organisms to add:"
     $orgs.each { |org| puts org }
     input = STDIN.gets.chomp
     input.capitalize!
     $orgs.each do |org|
       if org.include? input
-        choice = org
+        choice = eval "#{org}.new"
         break
       end
     end
@@ -103,7 +107,6 @@ class World
       y = STDIN.gets.chomp.to_i
       break if (0..@dim_y).include? y
     end
-    choice ||= gen_random_org # failsafe
     add(choice, x, y)
   end
 end
@@ -116,8 +119,9 @@ puts "Welcome to this (hardly) funny little game. :)"
 puts "Generating the map..."
 world = World.new
 puts "Done. The ecosystem map will have #{world.dim_x}x#{world.dim_y} dimensions."
-print ">>> Main menu <<<\n\tS: step\n\tA: add\n\tV: infect\n\tI: info\n\tR: restart\n\tQ: quit\n"
+print "Options:\tS: step\n\tA: add\n\tV: infect\n\tI: info\n\tR: restart\n\tQ: quit\n"
 loop do
+  puts ">>> Main menu <<<"
   input = STDIN.gets.chomp
   input.downcase!
   case input
