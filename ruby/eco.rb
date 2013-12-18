@@ -65,11 +65,17 @@ class World
   end
 
   #
-  # Adds an infection to a cell of the map that kills all the neighbor cells
+  # Adds an infection to a cell of the map that kills all the neighbor cells.
+  # Needs a level of infection to determine how many neighbors to kill.
+  # Works recursively.
   #
-  def infect(x, y)
-    # TODO
-    level = rand(3..9)
+  def infect(level, x, y)
+    return unless level > 0
+    (1..9).each do |n|
+      coords = @map[x][y].get_coords(n)
+      infect(level - 1, coords[0],coords[1])  # Recursive step
+      @map[coords[0]][coords[1]] = nil        # Die...
+    end
   end
 
   #
@@ -80,22 +86,12 @@ class World
   end
 
   #
-  # Function responsible for getting user input in order to add organisms
+  # Functions responsible for getting user input, and acting accordingly
   #
-  def user_add
-    x      ||= rand(0..@dim_x) # fail-safes. Also we probably need these
-    y      ||= rand(0..@dim_y) # because ruby scopes...
-    choice ||= gen_random_org
-    puts "Available organisms to add:"
-    $orgs.each { |org| puts org }
-    input = STDIN.gets.chomp
-    input.capitalize!
-    $orgs.each do |org|
-      if org.include? input
-        choice = eval "#{org}.new"
-        break
-      end
-    end
+
+  def get_user_coords
+    x ||= rand(0..@dim_x)   # fail-safes. Also we probably need these
+    y ||= rand(0..@dim_y)   # because ruby scopes...
     puts "Reminder that the map is: #{@dim_x}x#{@dim_y}"
     loop do
       print "x? "
@@ -107,7 +103,38 @@ class World
       y = STDIN.gets.chomp.to_i
       break if (0..@dim_y).include? y
     end
-    add(choice, x, y)
+    return [x,y]
+  end
+
+  #
+  # Wrapper aroung World#add
+  #
+  def user_add
+    choice ||= gen_random_org
+    puts "Available organisms to add:"
+    $orgs.each { |org| puts org }
+    input = STDIN.gets.chomp
+    input.capitalize!
+    $orgs.each do |org|
+      if org.include? input
+        choice = eval "#{org}.new"
+        break
+      end
+    end
+    c = get_user_coords
+    add(choice, c[0], c[1])
+  end
+
+  def user_infect
+    level ||= rand(1..4)
+    puts "Level of infection? "
+    loop do
+      level = STDIN.gets.chomp.to_i
+      break if level < 30
+      puts "Too big. You're mean. "
+    end
+    c = get_user_coords
+    infect(level, c[0], c[1])
   end
 end
 
@@ -127,7 +154,7 @@ loop do
   case input
   when 's' then world.step
   when 'a' then world.user_add
-  when 'v' then world.infect
+  when 'v' then world.user_infect
   when 'i' then world.info
   when 'r' then world.init_world
   when 'q' then break
