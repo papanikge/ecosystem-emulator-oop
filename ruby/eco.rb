@@ -77,6 +77,35 @@ class World
   def info
     # TODO
   end
+
+  #
+  # Function responsible for getting user input in order to add organisms
+  #
+  def user_add
+    puts "Available organisms to add:"
+    $orgs.each { |org| puts org }
+    input = STDIN.gets.chomp
+    input.capitalize!
+    $orgs.each do |org|
+      if org.include? input
+        choice = org
+        break
+      end
+    end
+    puts "Reminder that the map is: #{@dim_x}x#{@dim_y}"
+    loop do
+      print "x? "
+      x = STDIN.gets.chomp.to_i
+      break if (0..@dim_x).include? x
+    end
+    loop do
+      print "y? "
+      y = STDIN.gets.chomp.to_i
+      break if (0..@dim_y).include? y
+    end
+    choice ||= gen_random_org # failsafe
+    add(choice, x, y)
+  end
 end
 
 #
@@ -93,7 +122,7 @@ loop do
   input.downcase!
   case input
   when 's' then world.step
-  when 'a' then world.add
+  when 'a' then world.user_add
   when 'v' then world.infect
   when 'i' then world.info
   when 'r' then world.init_world
