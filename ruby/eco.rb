@@ -14,6 +14,7 @@ class World
 
   attr_reader :dim_x
   attr_reader :dim_y
+  attr_reader :org_count
   # this is the actual array that keeps the organisms
   # TODO: should we make the 'World' class a subclass of Array?
   attr_accessor :map
@@ -43,6 +44,7 @@ class World
     @map = Array.new(x) { |c| c = Array.new(y) }
     traverse_map do |el|
       el = gen_random_org
+      @org_count+=1
     end
   end
 
@@ -62,6 +64,7 @@ class World
   def add(org, x, y)
     # TODO (interact)
     puts "You requested a #{org.class} in #{x},#{y}."
+    @org_count+=1
   end
 
   #
@@ -82,7 +85,8 @@ class World
   # Prints info (of course)
   #
   def info
-    # TODO
+    # TODO: add Graphics (see OpenGL or Shoes)
+    puts "The map is: #{@dim_x}x#{@dim_y}, and contains #{@org_count} organisms."
   end
 
   #
