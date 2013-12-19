@@ -37,14 +37,14 @@ class Organism
   # moving to the a neighbor cell and interacting with what is there
   #
   def move
-    coords = get_coords(possible())
+    coords = get_coords(get_random_possible())
     #                           ^^ -- TODO
     # TODO
   end
 
   #
   # calculate the required coordinates for a cell
-  # check the table in the comments for 'possible' method
+  # check the table in the comments for 'get_random_possible' method
   #
   def get_coords(cell)
     a = Array.new(2)
@@ -83,7 +83,7 @@ class Organism
   # | 7 | 8 | 9 |
   # +-----------+
   #
-  def possible(max_x, max_y)
+  def get_random_possible(max_x, max_y)
     if x == 0
       if y == 0
         [5,6,8,9].sample
