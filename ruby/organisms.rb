@@ -27,7 +27,6 @@ class Organism
   attr_reader :id
   attr_reader :size
   attr_reader :orgs_eaten
-  attr_reader :food_needed
   attr_reader :steps_alive
 
   attr_accessor :x
@@ -45,7 +44,7 @@ class Organism
   #
   def tick
     alive = move_random
-    if alive && @orgs_eaten < @food_needed
+    if alive && @orgs_eaten < @size
       die
     end
   end
