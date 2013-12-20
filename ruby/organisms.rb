@@ -63,7 +63,7 @@ class Organism
       return false
     else
       # I am bigger
-      @orgs_eaten += 1
+      @orgs_eaten += $world.map[x][y].size
       # update positions
       @x = x
       @y = y

@@ -69,10 +69,10 @@ class World
       # This may be an example of bad programming. We cannot use #eat_or_interact
       # here because it only handles organisms inside our world.
       if @map[x][y] > org.size
-        @map[x][y].orgs_eaten += 1
+        @map[x][y].orgs_eaten += org.size
         org = nil
       else
-        org.orgs_eaten += 1
+        org.orgs_eaten += @map[x][y].size
         org.x = x
         org.y = y
         @map[x][y] = org
