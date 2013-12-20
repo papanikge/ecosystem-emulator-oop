@@ -37,24 +37,31 @@ class Organism
     @x = x
     @y = y
     @steps_alive = 0
+    @orgs_eaten = 5   # organisms start up healthy and fatty
   end
 
   #
   # One unit of time
   #
   def tick
-    move_random
-    # TODO: check health orgs_eaten etc etc...
+    alive = move_random
+    if alive && @orgs_eaten < @food_needed
+      die
+    end
   end
 
   #
   # Interacting with a fellow cell
+  # Returns true if we are still alive afterwards
   #
   def eat_or_interact(x, y)
+    return true if x == @x && y == @y
+
     if $world.map[x][y] > @size
       # I just got eaten
       $world.map[x][y].orgs_eaten += 1
       die
+      return false
     else
       # I am bigger
       @orgs_eaten += 1
@@ -63,6 +70,7 @@ class Organism
       @y = y
       $world.map[x][y] = self
       $world.map[@x][@y] = nil
+      return true
     end
   end
 
