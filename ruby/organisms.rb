@@ -49,25 +49,25 @@ class Organism
     a = Array.new(2)
     if (1..3).include? cell
       a[0] = case cell
-             when 1 then x-1
-             when 2 then x
-             when 3 then x+1
+             when 1 then @x-1
+             when 2 then @x
+             when 3 then @x+1
              end
-      a[1] = y-1
+      a[1] = @y-1
     elsif (4..6).include? cell
       a[0] = case cell
-             when 4 then x-1
-             when 5 then x
-             when 6 then x+1
+             when 4 then @x-1
+             when 5 then @x
+             when 6 then @x+1
              end
-      a[1] = y
+      a[1] = @y
     elsif (7..9).include? cell
       a[0] = case cell
-             when 7 then x-1
-             when 8 then x
-             when 9 then x+1
+             when 7 then @x-1
+             when 8 then @x
+             when 9 then @x+1
              end
-      a[1] = y+1
+      a[1] = @y+1
     else
       fail "get_coords argument is not in range"
     end
@@ -83,28 +83,28 @@ class Organism
   # +-----------+
   #
   def get_random_possible(max_x, max_y)
-    if x == 0
-      if y == 0
+    if @x == 0
+      if @y == 0
         [5,6,8,9].sample
-      elsif y == max_y
+      elsif @y == max_y
         [2,3,5,6].sample
       else
         [2,3,5,6,8,9].sample
       end
-    elsif y == 0
+    elsif @y == 0
       # we don't cover same situations
-      if x == max_x
+      if @x == max_x
         [4,5,7,8].sample
       else
         [4,5,6,7,8,9].sample
       end
-    elsif x == max_x
-      if y == max_y
+    elsif @x == max_x
+      if @y == max_y
         [1,2,4,5].sample
       else
         [1,2,4,5,7,8].sample
       end
-    elsif y == max_y
+    elsif @y == max_y
       [1,2,3,4,5,6].sample
     else
       [1,2,3,4,5,6,7,8,9].sample
