@@ -40,23 +40,38 @@ class Organism
   end
 
   #
-  # moving to the a neighbor cell and interacting with what is there
+  # One unit of time
   #
-  def move
-    coords = get_coords(get_random_possible($world.dim_x, $world.dim_y))
-    if $world.map[coords[0]][coords[1]] > @size
+  def tick
+    move_random
+    # TODO: check health orgs_eaten etc etc...
+  end
+
+  #
+  # Interacting with a fellow cell
+  #
+  def eat_or_interact(x, y)
+    if $world.map[x][y] > @size
       # I just got eaten
-      $world.map[coords[0]][coords[1]].orgs_eaten += 1
+      $world.map[x][y].orgs_eaten += 1
       die
     else
       # I am bigger
       @orgs_eaten += 1
       # update positions
-      @x = coords[0]
-      @y = coords[1]
-      $world.map[coords[0]][coords[1]] = self
+      @x = x
+      @y = y
+      $world.map[x][y] = self
       $world.map[@x][@y] = nil
     end
+  end
+
+  #
+  # moving to the a neighbor cell and interacting with what is there
+  #
+  def move_random
+    coords = get_coords(get_random_possible($world.dim_x, $world.dim_y))
+    eat_or_interact(coords[0], coords[1])
   end
 
   #

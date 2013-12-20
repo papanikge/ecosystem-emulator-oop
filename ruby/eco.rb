@@ -51,12 +51,12 @@ class World
   end
 
   #
-  # One unit of time
+  # One unit of time (for the world)
   #
   def step
     traverse_map do |el|
       fail "cell does not contain organism" unless el.class.ancestors.include? Organism
-      el.move
+      el.tick
     end
   end
 
