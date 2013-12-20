@@ -148,19 +148,19 @@ end
 
 puts "Welcome to this (hardly) funny little game. :)"
 puts "Generating the map..."
-world = World.new
-puts "Done. The ecosystem map will have #{world.dim_x}x#{world.dim_y} dimensions."
+$world = World.new
+puts "Done. The ecosystem map will have #{$world.dim_x}x#{$world.dim_y} dimensions."
 print "Options:\tS: step\n\tA: add\n\tV: infect\n\tI: info\n\tR: restart\n\tQ: quit\n"
 loop do
   puts ">>> Main menu <<<"
   input = STDIN.gets.chomp
   input.downcase!
   case input
-  when 's' then world.step
-  when 'a' then world.user_add
-  when 'v' then world.user_infect
-  when 'i' then world.info
-  when 'r' then world.init_world
+  when 's' then $world.step
+  when 'a' then $world.user_add
+  when 'v' then $world.user_infect
+  when 'i' then $world.info
+  when 'r' then $world.init_world
   when 'q' then break
   else puts "Wrong option."
   end

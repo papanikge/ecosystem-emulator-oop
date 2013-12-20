@@ -37,8 +37,7 @@ class Organism
   # moving to the a neighbor cell and interacting with what is there
   #
   def move
-    coords = get_coords(get_random_possible())
-    #                           ^^ -- TODO
+    coords = get_coords(get_random_possible($world.dim_x, $world.dim_y))
     # TODO
   end
 
