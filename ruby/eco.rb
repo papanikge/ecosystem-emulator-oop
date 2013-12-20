@@ -64,9 +64,24 @@ class World
   # Add an organism to a specific cell. This also updates metadata
   #
   def add(org, x, y)
-    # TODO (interact)
     puts "You requested a #{org.class} in #{x},#{y}."
-
+    if @map[x][y]
+      # This may be an example of bad programming. We cannot use #eat_or_interact
+      # here because it only handles organisms inside our world.
+      if @map[x][y] > org.size
+        @map[x][y].orgs_eaten += 1
+        org = nil
+      else
+        org.orgs_eaten += 1
+        org.x = x
+        org.y = y
+        @map[x][y] = org
+      end
+    else
+      # there was nothing there
+      @map[x][y] = org
+    end
+    puts "Added"
     @org_count+=1
   end
 
