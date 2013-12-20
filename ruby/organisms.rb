@@ -20,14 +20,14 @@ end
 # Basic object
 #
 class Organism
-  attr_reader   :id
+  attr_reader :id
+  attr_reader :size
+  attr_reader :orgs_eaten
+  attr_reader :food_needed
+  attr_reader :steps_alive
 
   attr_accessor :x
   attr_accessor :y
-  attr_accessor :size
-  attr_accessor :orgs_eaten
-  attr_accessor :food_needed
-  attr_accessor :steps_alive
 
   def initialize
     @steps_alive = 0
