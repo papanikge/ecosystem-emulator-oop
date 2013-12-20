@@ -18,6 +18,7 @@ end
 
 #
 # Basic object
+# It assumes that is run in a World object with a $world global var.
 #
 class Organism
   attr_reader :id
@@ -38,7 +39,26 @@ class Organism
   #
   def move
     coords = get_coords(get_random_possible($world.dim_x, $world.dim_y))
-    # TODO
+    if $world.map[coords[0]][coords[1]] > @size
+      # I just got eaten
+      $world.map[coords[0]][coords[1]].orgs_eaten += 1
+      die
+    else
+      # I am bigger
+      @orgs_eaten += 1
+      # update positions
+      @x = coords[0]
+      @y = coords[1]
+      $world.map[coords[0]][coords[1]] = self
+      $world.map[@x][@y] = nil
+    end
+  end
+
+  #
+  # Letting the Garbage Collector do the job, afterwards
+  #
+  def die
+    $world.map[@x][@y] = nil
   end
 
   #
