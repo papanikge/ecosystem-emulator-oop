@@ -42,9 +42,11 @@ class World
   #
   def init_world(x, y)
     @map = Array.new(x) { |c| c = Array.new(y) }
-    traverse_map do |el|
-      el = gen_random_org
-      @org_count+=1
+    @map.each_with_index do |xs, i|
+      xs.each_with_index do |ys, j|
+        @map[i][j] = gen_random_org(i, y)
+        @org_count+=1
+      end
     end
   end
 
@@ -64,6 +66,7 @@ class World
   def add(org, x, y)
     # TODO (interact)
     puts "You requested a #{org.class} in #{x},#{y}."
+
     @org_count+=1
   end
 
@@ -126,6 +129,8 @@ class World
       end
     end
     c = get_user_coords
+    choice.x = c[0]
+    choice.y = c[1]
     add(choice, c[0], c[1])
   end
 

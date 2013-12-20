@@ -10,10 +10,13 @@ $orgs = %w(Phytoplankton Zooplankton Squid Milittus Octopus
 
 #
 # Function to generate a random organism for the world.
+# Optional arguments are the positions on the map
 # This probably needs to favor Planktons, but it doesn't.
 #
-def gen_random_org
-  eval "#{$orgs.sample}.new"
+def gen_random_org(x=nil, y=nil)
+  x ||= rand(0..$world.dim_x)
+  y ||= rand(0..$world.dim_y)
+  eval "#{$orgs.sample}.new(x,y)"
 end
 
 #
@@ -30,7 +33,9 @@ class Organism
   attr_accessor :x
   attr_accessor :y
 
-  def initialize
+  def initialize(x, y)
+    @x = x
+    @y = y
     @steps_alive = 0
   end
 
