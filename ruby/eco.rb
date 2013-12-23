@@ -20,6 +20,7 @@ class World
   attr_accessor :map
 
   def initialize
+    @org_count = 0
     # possible ranges are hard coded because I'm bored
     @dim_x = rand(15..30)
     @dim_y = rand(15..30)
@@ -45,7 +46,7 @@ class World
     @map.each_with_index do |xs, i|
       xs.each_with_index do |ys, j|
         @map[i][j] = gen_random_org(i, y)
-        @org_count+=1
+        @org_count += 1
       end
     end
   end
