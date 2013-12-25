@@ -161,23 +161,20 @@ end
 
 #
 # Plankton classes
-# TODO: use metaprogramming throughout the program !!
 #
 
-class Phytoplankton < Organism
-  def initialize
-    super
-    @id   = 'PP'
-    @size = 1
-  end
-end
-
-class Zooplankton < Organism
-  def initialize
-    super
-    @id   = 'ZP'
-    @size = 1
-  end
+%w[Phytoplankton Zooplankton].each do |org|
+  eval %{
+    class #{org} < Organism
+      def initialize(x, y)
+        super
+        @x = x
+        @y = y
+        @id   = "#{org[0,2]}"
+        @size = 1
+      end
+    end
+  }
 end
 
 #
