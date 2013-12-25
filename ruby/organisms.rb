@@ -42,9 +42,7 @@ class Organism
   #
   def tick
     alive = move_random
-    if alive && @orgs_eaten < @size
-      die
-    end
+    die if alive && @orgs_eaten < @size
   end
 
   #
