@@ -204,82 +204,49 @@ end
 # Actual Animals from Mollusca phylum
 #
 
-class Squid < Mollusca
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Sq'
-  end
-end
-
-class Milittus < Mollusca
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Mi'
-  end
-end
-
-class Octopus < Mollusca
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Oc'
-  end
+%w[Squid Milittus Octopus].each do |org|
+  eval %{
+    class #{org} < Mollusca
+      def initialize(x, y)
+        super
+        @x  = x
+        @y  = y
+        @id = "#{org[0,2]}"
+      end
+    end
+  }
 end
 
 #
 # Actual Animals from Arthropoda phylum
 #
 
-class Shrimp < Arthropoda
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Sh'
-  end
-end
-
-class Crab < Arthropoda
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Cr'
-  end
+%w[Shrimp Crab].each do |org|
+  eval %{
+    class #{org} < Arthropoda
+      def initialize(x, y)
+        super
+        @x  = x
+        @y  = y
+        @id = "#{org[0,2]}"
+      end
+    end
+  }
 end
 
 #
 # Actual Animals from Chordata phylum (Vertebrate subphylum)
 #
 
-class Sprattus < Chordata
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Sp'
-  end
-end
-
-class Shark < Chordata
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Sk'
-  end
-end
-
-class Dolphin < Chordata
-  def initialize(x, y)
-    super
-    @x = x
-    @y = y
-    @id   = 'Do'
-  end
+%w[Sprattus Shark Dolphin].each do |org|
+  eval %{
+    class #{org} < Chordata
+      def initialize(x, y)
+        super
+        @x  = x
+        @y  = y
+        @id = "#{org[0,2]}"
+      end
+    end
+  }
 end
