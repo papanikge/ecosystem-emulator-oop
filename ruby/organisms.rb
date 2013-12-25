@@ -33,8 +33,6 @@ class Organism
   attr_accessor :y
 
   def initialize(x, y)
-    @x = x
-    @y = y
     @steps_alive = 0
     @orgs_eaten = 5   # organisms start up healthy and fatty
   end
@@ -184,21 +182,23 @@ end
 #
 
 class Mollusca < Organism
-  def initialize
+  def initialize(x, y)
     super
-    # maybe move the sizes here
+    @size = 2
   end
 end
 
 class Arthropoda < Organism
-  def initialize
+  def initialize(x, y)
     super
+    @size = 3
   end
 end
 
 class Chordata < Organism
-  def initialize
+  def initialize(x, y)
     super
+    @size = 4
   end
 end
 
@@ -207,26 +207,29 @@ end
 #
 
 class Squid < Mollusca
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Sq'
-    @size = 2
   end
 end
 
 class Milittus < Mollusca
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Mi'
-    @size = 2
   end
 end
 
 class Octopus < Mollusca
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Oc'
-    @size = 3
   end
 end
 
@@ -235,18 +238,20 @@ end
 #
 
 class Shrimp < Arthropoda
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Sh'
-    @size = 2
   end
 end
 
 class Crab < Arthropoda
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Cr'
-    @size = 3
   end
 end
 
@@ -255,25 +260,28 @@ end
 #
 
 class Sprattus < Chordata
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Sp'
-    @size = 3
   end
 end
 
 class Shark < Chordata
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Sk'
-    @size = 4
   end
 end
 
 class Dolphin < Chordata
-  def initialize
+  def initialize(x, y)
     super
+    @x = x
+    @y = y
     @id   = 'Do'
-    @size = 4
   end
 end

@@ -83,7 +83,7 @@ class World
       @map[x][y] = org
     end
     puts "Added"
-    @org_count+=1
+    @org_count += 1
   end
 
   #
