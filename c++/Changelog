@@ -1,0 +1,256 @@
+commit e6c40cb12a6296b6684777342fa017ae49ce52fd
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Mon Jan 16 14:08:17 2012 +0200
+
+    Rearranged classes and added age statistics
+
+commit cda7de6cf478d6d2c636dccec08016ddf36a0769
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Mon Jan 16 03:32:39 2012 +0200
+
+    how i want it - dynamic
+
+commit 42cc130b3d695ebe652ccec6cca71bb5a1246b8c
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Mon Jan 16 03:08:31 2012 +0200
+
+    Minor changes to the info option
+
+commit 6a416de430b73af9ad5c82e41f891f950ec62f21
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Mon Jan 16 02:52:34 2012 +0200
+
+    Split into two files and improved eating proccess.
+
+commit 1fbae798a77e8fb68dac898ef9bb035bc485423d
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sun Jan 15 23:11:30 2012 +0200
+
+    Finishing touches. Changed the place of functions
+    
+    and changed some scopes.
+    -Also added age code.
+
+commit 2018763d4461718169ced34da6a1667a335df074
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sun Jan 15 22:36:02 2012 +0200
+
+    Done with the eating/reproduction/movement
+    
+    -Added food and size stuff. When the food is 0, the size is reducing,
+    and when the size is 0 they DIE.
+    -Improved interaction and move.
+    -The Plankton CANNOT die to preserve food in the system.
+    -Also finished with the main step actions. Calling ALL the move().
+
+commit ddb54abfd0ac5b471e5ecbf6077902b03aed9194
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sun Jan 15 21:19:06 2012 +0200
+
+    Continuing the option. Done.
+    
+    -finished with the Info option.
+        Added counters (specific) and print them along with general info
+    -finished with the add option.
+        Improved the adding process,
+        added the "Infection" code
+    
+    Maybe there is THE NEED FOR >>*<<map[i][j] where I access the cells
+
+commit dcf383a376ac9f594c34480dfe6d33a79961683a
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sun Jan 15 18:28:58 2012 +0200
+
+    Improving menus and classes
+    
+    -Improving The Add option in the menu
+    -Implementing the interaction (for eating and reproduction)
+    -Implementing the move for all the cells
+    -Adding Shark and Dolphin in the create function so it can be used in
+        the adding and the reproduction options...
+    Now I have to make the actual movement
+
+commit a2cbd4927f660a17bf71ffb205d2bfa6bb7b6da2
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sun Jan 15 16:20:16 2012 +0200
+
+    Implementing the creator and the interaction
+    
+    -Also, the menus are all done, except the main "step" and the info,
+    in which I need to add more specific stuff
+    -Done with the creator function
+    -Starting to implement the eating the the interaction
+
+commit b6875f168222ec8fb5877d43f5ffca13f4aea854
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sat Jan 14 21:00:39 2012 +0200
+
+    I'm in the middle of creating the function of GOD
+    
+    Actually it is the which_Organism function to create organism objects
+    Also continued with the move and the interaction functions, and
+    created the NON-ORGANISM-OBJECT
+
+commit a8db245a8bfffa6620ea0872070ee87b8543739f
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sat Jan 14 17:58:50 2012 +0200
+
+    Getting started with the advanced map generation
+    
+    Using vectors to generate map - step 1 made.
+    Also created labels for the goto-s of the info/print loop
+
+commit d50b68d8a912b0c533d18553bd0ba62c33ece605
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sat Jan 14 17:22:58 2012 +0200
+
+    Update README
+
+commit 8f632bc4e34be411a38a5392b59ec6d40b4e1120
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sat Jan 14 17:16:32 2012 +0200
+
+    new README
+
+commit 23bdf198f1a2c641a948fb1b3b37c5b21ecfdd2d
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sat Jan 14 17:14:06 2012 +0200
+
+    new README
+
+commit 53e8515d1f3bcb0bd2a8d24a9bf754a4d8efa0f2
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sat Jan 14 17:07:33 2012 +0200
+
+    Get started with more stuff inside the sub-classes
+    
+    I just created the age, the size and the alias for all the basic
+    organisms and improved the whole class system
+    TODO: Create the map - Probaly with vector and pointers
+
+commit b08419469199a43b85ddfca4850c5300712e0887
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Fri Jan 13 17:00:54 2012 +0200
+
+    Implementing things into main and creating classes
+    
+    I just created the prototypes of all the required classes,
+    and started implementing more things inside the main, the menus,
+    and the map generation code.
+    TODO: Add the REAL stuff into the classes
+          put some organisms into the map.
+
+commit 618af021db8126ecc0767d33538a14552c25105c
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Fri Jan 13 02:19:58 2012 +0200
+
+    This is a whole new implementation. Basically, v2
+
+commit d8e31562dbc83ea387b5617e48e53dfbea30c225
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Sun Jan 8 17:43:41 2012 +0200
+
+    changes in random and wait
+
+commit 469bc4a6cae4ae0db7ec9e1a89d82f986868c412
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 15 21:12:40 2011 +0200
+
+    More
+
+commit cfdd0861e2f9a3e04b644d754859814a0c805245
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 15 19:05:46 2011 +0200
+
+    Getting started with time stuff
+
+commit b5ae79707873c5798008b70617bb8117126a8999
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 15 15:46:44 2011 +0200
+
+    Creating the map and placing organisms
+
+commit 0b0ef151efd2d85e4046f0a005e21fef4e1e2c93
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 15 14:33:47 2011 +0200
+
+    Starting to create the main function
+
+commit e2d4325f46f51613e4b41f8c4dbe78fbd1dc389a
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Tue Dec 13 17:05:39 2011 +0200
+
+    Implementing more stuff in the classes
+
+commit 9f41872d2339a86c7dd696b614d4e3863540ee4f
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Tue Dec 13 15:14:50 2011 +0200
+
+    Starting with implementing the menu and some class
+
+commit e0e5544301e1792bd4c7ea0c2e59228f485cb780
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Tue Dec 13 14:39:38 2011 +0200
+
+    One file
+
+commit 13a8cf2ce4d9fe11aa2048aaabdfca1a4b1f492c
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Tue Dec 13 14:38:00 2011 +0200
+
+    Trying to put everything in one file for starters, maybe I'll split it up later
+
+commit 796ddaff90a132abcdf095659882bbdcce614bfa
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 1 16:00:51 2011 +0200
+
+    Header fever and random generator
+
+commit 15cb5f4384693cda42d91853d51c0a4729bc15a2
+Merge: 77a826c 45df13f
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 1 14:59:45 2011 +0200
+
+    Merge branch 'master' of github.com:g3orge/EcoSystem
+
+commit 77a826c24fe628a33d0f73f9499ff38087dfddf8
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 1 14:57:31 2011 +0200
+
+    First header file
+
+commit 45df13f2a04cbc4155c7d9682e73233ed98e40b7
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Thu Dec 1 13:48:24 2011 +0200
+
+    update Organisms
+
+commit 1877a98b1551b74c1166f4ae7d452e896ab8da62
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Wed Nov 30 16:48:39 2011 +0200
+
+    new gitignore
+
+commit 38d9870b8eb4a78a1acf5cd45890cc1ca4607381
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Wed Nov 30 16:41:41 2011 +0200
+
+    removing DS_Store
+
+commit 2603b180db165bd18fe5abf531e9bdb67dc6b059
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Wed Nov 30 16:36:06 2011 +0200
+
+    deleting useless stuff
+
+commit f3b716387a68a6db99e6944773372b94e145149e
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Wed Nov 30 16:34:15 2011 +0200
+
+    Original Commit
+
+commit 2d4fafc9623f0b98a02c5a3bd34412cdce053863
+Author: George Papanikolaou <g3orge.app@gmail.com>
+Date:   Wed Nov 30 16:31:37 2011 +0200
+
+    Original Commit
