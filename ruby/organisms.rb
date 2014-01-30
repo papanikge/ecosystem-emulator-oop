@@ -245,7 +245,7 @@ end
         super
         @x  = x
         @y  = y
-        @id = "#{org[0,2]}"
+        @id = "#{if org == "Shark": "Sk" else org[0,2] end}"
       end
     end
   }
