@@ -119,5 +119,33 @@ private:
 
 int main(void)
 {
-    // TODO :P
+    cout << "Welcome to this (hardly) funny little game. :)" << endl;
+    cout << "Generating the map..." << endl;
+    world = new World();
+    cout << "Done. The map will be " << world.dim_x << "x" << world.dim_y << endl;
+    // Google suggests using prinf normally and streams like cout for logging, so... TODO
+    printf("Options:\tS: step\n\tA: add\n\tV: infect\n\tI: info\n\tR: restart\n\tQ: quit\n");
+    while(1) {
+        printf(">>> Main menu <<<\n");
+        // get user input here.... in 'input' var
+        switch(input) {
+        case 's': case 'S':
+            world.step();
+            break;
+        case 'a': case 'A':
+            user_add(); // <-- TODO
+            break;
+        case 'v': case 'V':
+            user_infect(); // <-- TODO
+            break;
+        case 'i': case 'I':
+            world.info();
+            break;
+        case 'r': case 'R':
+            world.init_world();
+            break;
+        case 'q': case 'Q': default:
+            exit(EXIT_SUCCESS);
+        }
+    }
 }
