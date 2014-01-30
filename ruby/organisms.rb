@@ -54,7 +54,7 @@ class Organism
   def eat_or_interact(x, y)
     return true if x == @x && y == @y
 
-    if $world.map[x][y] > @size
+    if $world.map[x][y].size > @size
       # I just got eaten
       $world.map[x][y].orgs_eaten += 1
       die
