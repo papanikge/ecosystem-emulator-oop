@@ -6,8 +6,8 @@
 
 // TODO: hey stupid old me.! Do you really need all of these shit???
 #include <iostream>
-#include <cstring>
-#include <ctime>
+// #include <cstring>
+// #include <ctime>
 #include <vector>
 #include <cstdlib>
 #include "organisms.cc"
@@ -78,22 +78,25 @@ public:
     int dim_x;
     int dim_y;
     int org_count;
-    Organism* map; // TODO
+    Organism* map; // TODO: is this ok?
 
     //
     // Initializers
     //
     World()
     {
-        // TODO
+        this.org_count = 0;
+        this.dim_x = random(15,30);
+        this.dim_y = random(15,30);
+        init_world();
     }
 
-    traverse_map()
+    init_world()
     {
         // TODO
     }
 
-    init_world()
+    traverse_map()
     {
         // TODO
     }
@@ -119,15 +122,23 @@ private:
 
 int main(void)
 {
+    string temp = "";
+    char input = {0};
+
     cout << "Welcome to this (hardly) funny little game. :)" << endl;
     cout << "Generating the map..." << endl;
     world = new World();
     cout << "Done. The map will be " << world.dim_x << "x" << world.dim_y << endl;
     // Google suggests using prinf normally and streams like cout for logging, so... TODO
     printf("Options:\tS: step\n\tA: add\n\tV: infect\n\tI: info\n\tR: restart\n\tQ: quit\n");
-    while(1) {
+    while(true) {
         printf(">>> Main menu <<<\n");
-        // get user input here.... in 'input' var
+        getline(cin, temp);
+        if (temp.length() == 1)
+            input = temp[0];
+        else
+            continue;
+
         switch(input) {
         case 's': case 'S':
             world.step();

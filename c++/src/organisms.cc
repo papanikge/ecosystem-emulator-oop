@@ -7,10 +7,10 @@
 class Organism {
 public:
     int size;
-    int id;
     int orgs_eaten;
     int steps_alive;
     int x, y;
+    string id;
 
     // Initializer
     Organism(x,y)
