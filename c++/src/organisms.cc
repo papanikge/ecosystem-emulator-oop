@@ -4,6 +4,16 @@
 // TODO: document the use of public almost everywhere...
 //
 
+//
+// in the spirit of ruby, get a random element from an array...
+//
+int sample(int* ar)
+{
+    int size = sizeof(ar)/sizeof(ar[0]);
+
+    return ar[rand() % size];
+}
+
 class Organism {
 public:
     int size;
@@ -12,7 +22,7 @@ public:
     int x, y;
     string id;
 
-    // Initializer
+    // Initializer. The lack of type is ugly.
     Organism(x,y)
     {
         this.x  = x;
@@ -21,37 +31,147 @@ public:
         this.steps_alive = 0;
     }
 
-    void eat_or_interaction(Organism l)
-    {
-        // TODO
-    }
-
-    void move_random()
-    {
-        // TODO
-    }
-
-    void die()
-    {
-        // TODO
-    }
-
-    void get_coords()
-    {
-        // TODO
-    }
-
-    void get_random_possible()
+    //
+    // a 'tick' is a one unit of time
+    //
+    void tick(void)
     {
         // TODO
     }
 
     //
-    // one unit of time
+    // Interacting with a fellow cell
+    // Returns true if we are still alive afterwards
     //
-    void tick()
+    bool eat_or_interaction(x, y)
     {
-        // TODO
+        if (this.x == x && this.y == y)
+            return true;
+        if (world.map[x][y].size > this.size) {
+            // I just got eaten. Bye life...
+            world.map[x][y].orgs_eaten += 1;
+            die();
+            return false;
+        } else {
+            // I am bigger.. nom nom nom
+            this.orgs_eaten += 1;
+            this.x = x;
+            this.y = y;
+            world.map[x][y]   = this;
+            world.map[@x][@y] = NULL;
+            return true;
+        }
+    }
+
+    //
+    // moving to the a neighbor cell and interacting with anything that is there
+    //
+    void move_random(void)
+    {
+        int coords[2];
+
+        coords = get_coords(get_random_possible(world.dim_x, world.dim_y));
+        eat_or_interact(coords[0], coords[1]);
+        return;
+    }
+
+    void die(void)
+    {
+        delete this;
+    }
+
+    //
+    // The following functions are here to make us capable of moving in
+    // a square board. Need a way to note the fellow cells...
+    // +-----------+
+    // | 1 | 2 | 3 |
+    // | 4 | 5 | 6 |
+    // | 7 | 8 | 9 |
+    // +-----------+
+    //
+    void get_random_possible(max_x, max_y)
+    {
+        // for brevity
+        int x = this.x;
+        int y = this.y;
+
+        if (x == 0) {
+            if (y == 0) {
+                return sample([5,6,8,9]);
+            } else if (y == max_y) {
+                return sample([2,3,5,6]);
+            } else {
+                return sample([2,3,5,6,8,9]);
+            }
+        } else if (y == 0) {
+            if (x == max_x) {
+                return sample([4,5,7,8]);
+            } else {
+                return sample([4,5,6,7,8,9]);
+            }
+        } else if (x == max_x) {
+            if (y == max_y) {
+                return sample([1,2,4,5]);
+            } else {
+                return sample([1,2,4,5,7,8]);
+            }
+        } else if (y == max_y) {
+            return sample([1,2,3,4,5,6]);
+        } else {
+            return sample([1,2,3,4,5,6,7,8,9]);
+        }
+    }
+
+    int* get_coords(int cell)
+    {
+        int a[2];
+        if (1 <= cell || cell <= 3) {
+            a[1] = this.y - 1;
+            switch (cell) {
+            case 1:
+                a[0] = this.x - 1;
+                break;
+            case 2:
+                a[0] = this.x;
+                break;
+            case 3:
+                a[0] = this.x + 1;
+                break;
+            default:
+                fatal("BUG in get_coords");
+            }
+        } else if (4 <= cell || cell <= 6) {
+            a[1] = this.y;
+            switch (cell) {
+            case 4:
+                a[0] = this.x - 1;
+                break;
+            case 5:
+                a[0] = this.x;
+                break;
+            case 6:
+                a[0] = this.x + 1;
+                break;
+            default:
+                fatal("BUG in get_coords");
+            }
+        } else {
+            a[1] = this.y + 1;
+            switch (cell) {
+            case 7:
+                a[0] = this.x - 1;
+                break;
+            case 8:
+                a[0] = this.x;
+                break;
+            case 9:
+                a[0] = this.x + 1;
+                break;
+            default:
+                fatal("BUG in get_coords");
+            }
+        }
+        return a;
     }
 };
 
