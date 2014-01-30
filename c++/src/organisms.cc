@@ -5,7 +5,7 @@
 //
 
 class Organism {
-    public:
+public:
     int size;
     int id;
     int orgs_eaten;
@@ -59,7 +59,7 @@ class Organism {
 // Our friends the Planktons
 //
 class Phytoplankton: public Organism {
-    public:
+public:
     // initializer (TODO: does this needs to be 'void'??)
     void Phytoplankton(x,y)
     {
@@ -70,7 +70,7 @@ class Phytoplankton: public Organism {
 };
 
 class Zooplankton: public Organism {
-    public:
+public:
     // TODO: maybe use some form of metaprogramming by importing the same file
     // multiple times with a different symbol for these...?
     void Zooplankton(x,y)
@@ -87,7 +87,7 @@ class Zooplankton: public Organism {
 // but I want to keep the code small
 //
 class Mollusca: public Organism {
-    public:
+public:
     // initializer (TODO: does this needs to be 'void'??)
     void Mollusca(x,y)
     {
@@ -97,7 +97,7 @@ class Mollusca: public Organism {
 }
 
 class Arthropoda: public Organism {
-    public:
+public:
     // initializer (TODO: does this needs to be 'void'??)
     void Arthropoda(x,y)
     {
@@ -107,7 +107,7 @@ class Arthropoda: public Organism {
 }
 
 class Chordata: public Organism {
-    public:
+public:
     // initializer (TODO: does this needs to be 'void'??)
     void Chordata(x,y)
     {
@@ -120,7 +120,7 @@ class Chordata: public Organism {
 // Actual useable organisms
 //
 class Squid: public Mollusca {
-    public:
+public:
     void Squid(x,y)
     {
         // TODO super call...
@@ -129,7 +129,7 @@ class Squid: public Mollusca {
 }
 
 class Mylittus: public Mollusca {
-    public:
+public:
     void Squid(x,y)
     {
         // TODO super call...
@@ -138,7 +138,7 @@ class Mylittus: public Mollusca {
 }
 
 class Octopus: public Mollusca {
-    public:
+public:
     void Octopus(x,y)
     {
         // TODO super call...
@@ -147,7 +147,7 @@ class Octopus: public Mollusca {
 }
 
 class Shrimp: public Arthropoda {
-    public:
+public:
     void Shrimp(x,y)
     {
         // TODO super call...
@@ -156,7 +156,7 @@ class Shrimp: public Arthropoda {
 }
 
 class Crab: public Arthropoda {
-    public:
+public:
     void Crab(x,y)
     {
         // TODO super call...
@@ -165,7 +165,7 @@ class Crab: public Arthropoda {
 }
 
 class Sprattus: public Chordata {
-    public:
+public:
     void Sprattus(x,y)
     {
         // TODO super call...
@@ -174,7 +174,7 @@ class Sprattus: public Chordata {
 }
 
 class Dolphin: public Chordata {
-    public:
+public:
     void Dolphin(x,y)
     {
         // TODO super call...
@@ -183,7 +183,7 @@ class Dolphin: public Chordata {
 }
 
 class Shark: public Chordata {
-    public:
+public:
     void Shark(x,y)
     {
         // TODO super call...
