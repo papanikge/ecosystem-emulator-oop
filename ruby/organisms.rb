@@ -33,6 +33,8 @@ class Organism
   attr_accessor :y
 
   def initialize(x, y)
+    @x = x
+    @y = y
     @steps_alive = 0
     @orgs_eaten = 5   # organisms start up healthy and fatty
   end
@@ -164,8 +166,6 @@ end
     class #{org} < Organism
       def initialize(x, y)
         super
-        @x = x
-        @y = y
         @id   = "#{org[0,2]}"
         @size = 1
       end
@@ -209,8 +209,6 @@ end
     class #{org} < Mollusca
       def initialize(x, y)
         super
-        @x  = x
-        @y  = y
         @id = "#{org[0,2]}"
       end
     end
@@ -226,8 +224,6 @@ end
     class #{org} < Arthropoda
       def initialize(x, y)
         super
-        @x  = x
-        @y  = y
         @id = "#{org[0,2]}"
       end
     end
@@ -243,8 +239,6 @@ end
     class #{org} < Chordata
       def initialize(x, y)
         super
-        @x  = x
-        @y  = y
         @id = "#{if org == "Shark": "Sk" else org[0,2] end}"
       end
     end
